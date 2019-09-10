@@ -1,0 +1,148 @@
+body{
+  background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('img/concierto-min.jpg');
+  background-size: cover;
+  margin: 0 auto;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+}
+
+main{
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+ul.principal{
+  height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+ul.principal li{
+  list-style: none;
+  text-align: center;
+  float: left;
+}
+ul.principal li a{
+  color: #fff;
+}
+
+ul.principal li a:hover{
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+i.iconos{
+  color: white;
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 20px;
+}
+h2{
+  font-size: 1.4em;
+  padding: 20px 0 20px 0;
+  font-weight: 900;
+}
+h3{
+  font-size: 0.8em;
+  padding-top: 20px;
+  text-transform: uppercase;
+}
+.highligths-events{
+  margin: auto;
+  background-color: #efefef;
+  text-align: center;
+  text-transform: uppercase;
+  color: #581845;
+  border-top: 5px solid #581845;
+  padding-bottom: 30px;
+}
+section{
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: auto;
+}
+.row{
+  justify-content: center;
+}
+.promo-btn{
+  background-color: #efefef;
+}
+.btn{
+  text-transform: uppercase;
+  margin: 15px 0 15px 0;
+  border: 1px solid #581845;
+  border-radius: 10px;
+  color: #581845;
+}
+nav.navbar{
+  overflow: hidden;
+  background-color: #581845;
+}
+
+ul.leftnavbar{
+  margin-top: 1%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-decoration: none;
+  list-style: none;
+
+  }
+
+  ul.leftnavbar li{
+    padding: 0 5px 0 0;
+
+  }
+
+  ul.rightnavbar{
+    margin-top: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-decoration: none;
+    list-style: none;
+    float: right;
+    }
+
+  ul.rightnavbar li a{
+    color: #FFF;
+  }
+
+  ul.leftnavbar li a{
+    color: #FFF;
+  }
+
+  ul.leftnavbar p{
+    color: #FFF;
+    margin: 0 3% 0 3%;
+  }
+
+  ul.rightnavbar p{
+    color: #FFF;
+    margin: 0 3% 0 3%;
+  }
+  div.searchbar {
+    width: 100%;
+    background-color: #581845;
+    padding: 3% 0;
+    border-top: 1px solid rgba(0,0,0,0.5);
+
+  }
+
+  form.form-inline {
+    display: flex;
+    justify-content: center;
+  }
+
+.fa-search {
+  color: #FFF;
+}
+
+.form-inline .form-control {
+  width: 70%;
+}
