@@ -16,14 +16,16 @@
     <title>Registro</title>
 </head>
 <body> 
-   <div class="column">
-    <h2>Registrate para realizar tu compra</h2>
-    <div class="ui secondary segment">
-        <div class="ui form">
-                <div class="three wide field">
-                    <div class="required field">
-                        <label>Pais de residencia</label>
-                        <select class="ui search dropdown">
+    <div class="ui grid">
+      <div class="column">
+        <div class="ui segment">
+            <h2>¡Registrate para realizar tu compra!</h2>
+            <div class="ui secondary segment">
+                <div class="ui form">
+                    <div class="field"> <!--class="three wide field"-->
+                        <div class="required field">
+                            <label>Pais de residencia</label>
+                            <select class="ui search dropdown">
                                 <option value="">Seleciona tu pais de residencia</option>
                                 <option value="AF">Afghanistan</option>
                                 <option value="AX">Åland Islands</option>
@@ -274,67 +276,69 @@
                                 <option value="YE">Yemen</option>
                                 <option value="ZM">Zambia</option>
                                 <option value="ZW">Zimbabwe</option>
-                        </select>
-                    </div>
-                </div>
-        </div>
-        <h2>Datos de tu cuenta</h2>
-        <div class="ui form">
-            <div class="three wide field">
-                <div class="field">
-                        <label>Correo electrónico</label>
-                        <input type="email" placeholder="joe@schmoe.com">
-                </div>
-                <div class="field">
-                        <label>Crea tu contraseña</label>
-                        <input type="text" placeholder="">
-                </div>
-                <div class="field">
-                      <label>Confirma tu contraseña</label>
-                      <input type="text" placeholder="">
-               </div> 
-            </div>
-        </div>
-        <h2>Datos personales</h2>
-        <div class="ui form">
-                <div class="fields">
-                    <div class="five wide field">
-                        <div class="required field">
-                            <label>Nombre</label>
-                            <input type="text" placeholder="Nombre completo">
-                        </div>
-                        <div class="required field">
-                            <label>Apellido</label>
-                            <input type="text" placeholder="Apellido">
+                            </select>
                         </div>
                     </div>
                 </div>
-                    <div class="two wide field">
+                <h2>Datos de tu cuenta</h2>
+                <div class="ui form">
+                    <div class="field">
                         <div class="field">
-                            <label>Genero</label>
-                            <div class="ui selection dropdown">
-                             <input type="hidden" name="Genero">
-                                <i class="dropdown icon"></i>
-                                <div class="default text">Genero</div>
-                                <div class="menu">
-                                     <div class="item" data-value="1">Masculino</div>
-                                     <div class="item" data-value="0">Femenino</div>
-                                </div>
+                            <label>Correo electrónico</label>
+                            <input type="email" placeholder="joe@schmoe.com">
+                        </div>
+                        <div class="field">
+                            <label>Crea tu contraseña</label>
+                            <input type="text" placeholder="">
+                        </div>
+                        <div class="field">
+                            <label>Confirma tu contraseña</label>
+                            <input type="text" placeholder="">
+                        </div> 
+                    </div>
+                </div>
+                <h2>Datos personales</h2>
+                <div class="ui form">
+                    <div class="fields">
+                        <div class="field">
+                            <div class="required field">
+                                <label>Nombre</label>
+                                <input type="text" placeholder="Nombre completo">
+                            </div>
+                            <div class="required field">
+                                <label>Apellido</label>
+                                <input type="text" placeholder="Apellido">
                             </div>
                         </div>
                     </div>
-                <div class="required field">
-                    <div class="ui checkbox">
-                        <input type="checkbox" tabindex="0" class="hidden">
-                        <label>Estoy de acuerdo con los terminos y condiciones</label>
-                    </div>
+                        <div class="field">
+                            <div class="field">
+                                <label>Genero</label>
+                                <div class="ui selection dropdown">
+                                <input type="hidden" name="Genero">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Genero</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="1">Masculino</div>
+                                        <div class="item" data-value="0">Femenino</div>
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                        <div class="required field">
+                            <div class="ui checkbox">
+                                <input type="checkbox" tabindex="0" class="hidden">
+                                <label>Estoy de acuerdo con los terminos y condiciones</label>
+                            </div>
+                        </div>
                 </div>
-        </div>
                 <br>
                 <div class="field">
-                    <div class="ui submit button">Enviar</div>
+                    <div class="ui purple submit button">Enviar</div>
                 </div>  
-    </div>
-   </div>       
+            </div>
+        </div>
+      </div>  
+    </div>    
 </body>
 </html>
