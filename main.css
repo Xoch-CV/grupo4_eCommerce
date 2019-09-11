@@ -84,6 +84,7 @@ section{
   border-radius: 10px;
   color: #581845;
 }
+
 nav.navbar{
   overflow: hidden;
   background-color: #581845;
@@ -114,14 +115,50 @@ ul.leftnavbar{
     float: right;
     }
 
+    ul.rightnavbarlogin{
+      margin-top: 2%;
+      }
+      ul.rightnavbarlogin li{
+        list-style: none;
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+    ul.rightnavbarlogin li img{
+      display: inline-block;
+      float: right;
+      border-radius: 50%;
+      margin: 0 10% 1% 0;
+    }
+
   ul.rightnavbar li a{
     color: #FFF;
   }
+
+  ul.rightnavbarlogin li a{
+    color: #FFF;
+  }
+
   ul.rightnavbar li a:hover{
       text-decoration: none;
       border-radius: 20px;
       border: 1px solid white;
       padding: 10px;
+  }
+  ul.rightnavbarlogin li a{
+      text-decoration: none;
+      float: right;
+      display: inline-block;
+      font-size: 10px;
+      margin: 0px;
+  }
+  ul.rightnavbarlogin li a:hover{
+      text-decoration: none;
+      border-radius: 20px;
+      border: 1px solid white;
   }
 
   ul.leftnavbar li a{
