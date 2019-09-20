@@ -1,8 +1,16 @@
 <?php
-if($_POST){
-
-}
-?>
+// if($_POST){
+//   $usuarios = [
+//     "nombre" = $_POST["nombre"],
+//     "apellido" = $_POST["apellido"],
+//     "email" = $_POST["email"],
+//     "password" = password_hash($_POST['password'],PASSWORD_DEFAULT)
+//   ]
+// $datos= json_decode(file_get_contents("data.json"),true);
+//
+//
+// }
+// ?>
 
 
 <!DOCTYPE html>
@@ -23,7 +31,7 @@ if($_POST){
     <title>Registro</title>
 </head>
 <body>
-  <form class="" action="Registro.html" method="post">
+  <form class="" action="Registro.php" method="post">
     <div class="ui grid">
       <div class="column">
         <div class="ui segment">
@@ -35,26 +43,44 @@ if($_POST){
                       <div class="field">
                           <div class="required field">
                               <label>Nombre</label>
-                              <input type="text" placeholder="Nombre completo">
+                              <input type="text" name="nombre" placeholder="Nombre completo">
+                              <?php if($_POST):?>
+                                <?php if(strlen($_POST["nombre"])==0):?>
+                                 <span>Tienes que completar este campo.</span>
+                              <?php endif;?>
+                              <?php endif;?>
                           </div>
                           <div class="required field">
                               <label>Apellido</label>
-                              <input type="text" placeholder="Apellido">
+                              <input type="text" name="apellido" placeholder="Apellido">
+                              <?php if($_POST):?>
+                                <?php if(strlen($_POST["apellido"])==0):?>
+                                 <span>Tienes que completar este campo.</span>
+                              <?php endif;?>
+                              <?php endif;?>
                           </div>
                       </div>
                   </div>
                     <div class="field">
                         <div class="field">
                             <label>Correo electrónico</label>
-                            <input type="email" placeholder="joe@schmoe.com">
+                            <input type="email" name="email" placeholder="joe@schmoe.com">
+                            <?php if($_POST):?>
+                              <?php if(strlen($_POST["email"])==0):?>
+                               <span>Tienes que completar este campo.</span>
+                             <?php if(filter_var($_POST["email"],FILTER_VALIDATE_EMAIL)===false && strlen($_POST["email"])>8):?>
+                                 <span>El campo no es válido.</span>
+                            <?php endif;?>
+                            <?php endif;?>
+                            <?php endif;?>
                         </div>
                         <div class="field">
                             <label>Crea tu contraseña</label>
-                            <input type="text" placeholder="">
+                            <input type="text" name = "password" placeholder="">
                         </div>
                         <div class="field">
                             <label>Confirma tu contraseña</label>
-                            <input type="text" placeholder="">
+                            <input type="text" name= "confirmarpass" placeholder="">
                         </div>
                     </div>
                 </div>
@@ -69,7 +95,7 @@ if($_POST){
                 </div>
                 <br>
                 <div class="field">
-                    <div class="ui submit button">Enviar</div>
+                    <input type="submit" name="enviar" value="Enviar">
                 </div>
             </div>
         </div>
