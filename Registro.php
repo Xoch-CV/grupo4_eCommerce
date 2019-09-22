@@ -1,16 +1,101 @@
 <?php
-// if($_POST){
-//   $usuarios = [
-//     "nombre" = $_POST["nombre"],
-//     "apellido" = $_POST["apellido"],
-//     "email" = $_POST["email"],
-//     "password" = password_hash($_POST['password'],PASSWORD_DEFAULT)
-//   ]
-// $datos= json_decode(file_get_contents("data.json"),true);
-//
-//
-// }
-// ?>
+//Variables para persistencia de datos
+$nombre='';
+$apellido='';
+$email='';
+$pass='';
+$confirmapass='';
+$button='';
+$checkbox='';
+
+//Variables para validacion datos
+$campovacio='Debes completar este campo';
+$numcaract='El password debe tener al menos 8 caracteres';
+$nombrevacio='';
+$apellidovacio='';
+$emailvacio='';
+$formatonovalido='';
+$passvacio='';
+$confirmavacio='';
+$passcaract='';
+$confirmcaract='';
+$nocoincide='';
+$aceptarterminos='';
+
+//Validacion datos
+if($_POST){
+  //var_dump($_POST); exit;
+    //Validamos nombre
+    if(strlen($_POST['nombre'])==0){
+      $nombrevacio = $campovacio;
+    }else{
+      $nombre = $_POST['nombre'];
+    }
+    //Validamos apellido
+    if(strlen($_POST['apellido'])==0){
+      $apellidovacio = $campovacio;
+    }else{
+      $apellido = $_POST['apellido'];
+    }
+    //Validamos email
+    if(strlen($_POST['email'])==0){
+      $emailvacio = $campovacio;
+    }elseif(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
+       $email = $_POST['email'];
+    }else{
+          $formatonovalido = 'El formato no es correcto';
+    }
+    //Validamos password
+    if(strlen($_POST['pass'])==0){
+      $passvacio = $campovacio;
+    }elseif(strlen($_POST['pass'])>=8){
+        $pass = $_POST['pass'];
+    }else{
+      $passcaract = $numcaract;
+    }
+    //Verificamos contraseña
+    if(strlen($_POST['confirmapass'])==0){
+      $confirmavacio = $campovacio;
+    }elseif(strlen($_POST['confirmapass'])<8){
+        $confirmcaract = $numcaract;
+      }else{
+        if($_POST['confirmapass']==$pass){
+            $confirmapass = $_POST['confirmapass'];
+        }else {
+          $nocoincide = 'Las contraseñas no coinciden';
+        }
+      }
+    //Validamos checkbox
+    if(!isset($_POST['checkbox'])){
+      $aceptarterminos= 'Debes aceptar los terminos y condiciones';
+    }
+
+    if ($nombre == $_POST['nombre'] && $apellido = $_POST['apellido'] && $email = $_POST['email'] && $pass == $confirmapass && $checkbox == $_POST['checked']) {
+
+    //Almacenamos datos para generar archivo json post validacion
+      $usuario = [
+        'nombre' => $_POST['nombre'],
+        'apellido' => $_POST['apellido'],
+        'email' => $_POST['email'],
+        'pass' => password_hash($_POST['pass'],PASSWORD_DEFAULT),
+        'foto' => null,
+      ];
+      //Creamos archivo json vacio y decodificamos a un array php
+      $data=json_decode(file_get_contents('data.json'),true);
+      //Agregarmos un usuario nuevo
+      $data['usuarios'][]=$usuario;
+      //Codificamos y almacenamos array php a json de nuevo
+      file_put_contents('data.json',json_encode($data,JSON_PRETTY_PRINT));
+
+    //Redireccionamos a pagina de inicio
+    header('location:Login.php');
+    // }else{
+    //   echo 'Algo falló.';
+    // }
+    }
+}
+
+?>
 
 
 <!DOCTYPE html>
@@ -31,7 +116,7 @@
     <title>Registro</title>
 </head>
 <body>
-  <form class="" action="Registro.php" method="post">
+<form class="" action="Registro.php" method="post">
     <div class="ui grid">
       <div class="column">
         <div class="ui segment">
@@ -43,59 +128,60 @@
                       <div class="field">
                           <div class="required field">
                               <label>Nombre</label>
-                              <input type="text" name="nombre" placeholder="Nombre completo">
-                              <?php if($_POST):?>
-                                <?php if(strlen($_POST["nombre"])==0):?>
-                                 <span>Tienes que completar este campo.</span>
-                              <?php endif;?>
-                              <?php endif;?>
+                              <input type="text" name="nombre" value="<?=$nombre?>" placeholder="Nombre">
+                              <span><?=$nombrevacio?></span>
                           </div>
-                          <div class="required field">
                               <label>Apellido</label>
-                              <input type="text" name="apellido" placeholder="Apellido">
-                              <?php if($_POST):?>
-                                <?php if(strlen($_POST["apellido"])==0):?>
-                                 <span>Tienes que completar este campo.</span>
-                              <?php endif;?>
-                              <?php endif;?>
-                          </div>
+                              <input type="text" name="apellido" value="<?=$apellido?>"placeholder="Apellido">
+                              <span><?=$apellidovacio?></span>
                       </div>
                   </div>
                     <div class="field">
-                        <div class="field">
+                        <div class="required field">
                             <label>Correo electrónico</label>
-                            <input type="email" name="email" placeholder="joe@schmoe.com">
-                            <?php if($_POST):?>
-                              <?php if(strlen($_POST["email"])==0):?>
-                               <span>Tienes que completar este campo.</span>
-                             <?php if(filter_var($_POST["email"],FILTER_VALIDATE_EMAIL)===false && strlen($_POST["email"])>8):?>
-                                 <span>El campo no es válido.</span>
-                            <?php endif;?>
-                            <?php endif;?>
-                            <?php endif;?>
+                            <!--type="text" para que no haga la validacion el navegador-->
+                            <input type="text" name="email" value="<?=$email?>" placeholder="joe@schmoe.com">
+                            <span><?=$emailvacio?><br></span>
+                            <span><?=$formatonovalido?></span>
                         </div>
+                    </div>
                         <div class="field">
+                          <div class="required field">
                             <label>Crea tu contraseña</label>
-                            <input type="text" name = "password" placeholder="">
+                            <input type="text" name="pass" value="<?=$pass?>" placeholder="Mínimo 8 caracteres">
+                            <span><?=$passvacio?></span>
+                            <span><?=$passcaract?></span>
+                          </div>
                         </div>
                         <div class="field">
+                          <div class="required field">
                             <label>Confirma tu contraseña</label>
-                            <input type="text" name= "confirmarpass" placeholder="">
+                            <input type="text" name="confirmapass" value="<?=$confirmapass?>" placeholder="Mínimo 8 caracteres">
+                            <span><?=$confirmavacio?></span>
+                            <span><?=$confirmcaract?></span>
+                            <span><?=$nocoincide?></span>
+                          </div>
                         </div>
                     </div>
                 </div>
-                <br>
                 <div class="ui form">
                         <div class="required field">
                             <div class="ui checkbox">
-                                <input type="checkbox" tabindex="0" class="hidden">
+                                <input type="checkbox" name="checkbox" value="checked" class="">
                                 <label>Estoy de acuerdo con los terminos y condiciones</label>
+                                <span><?=$aceptarterminos?></span>
                             </div>
+                            <br>
+                            <!--<div class="ui checkbox">
+                                <input type="checkbox" tabindex="0" class="hidden">
+                                <label>Recordar mi usuario</label>
+                            </div>
+                          -->
                         </div>
                 </div>
                 <br>
                 <div class="field">
-                    <input type="submit" name="enviar" value="Enviar">
+                    <input class="ui submit button" type="submit" name="button" value="Enviar">
                 </div>
             </div>
         </div>

@@ -1,55 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="Semantic_ui/project/semantic/dist/semantic.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous">
-    </script>
-    <script src="Semantic_ui/project/semantic/dist/semantic.min.js"></script>
-    <title>Login</title>
-</head>
-<body>
-    <div class="ui grid">
-        <div class="column">
-          <form action="indexLogin.html">
-            <div class="ui segment">
-                <h4>Ingresa a tu cuenta</h4>
-                <!--<div class="two column centered row"></div>-->
-                <div class="ui secondary segment">
-                    <div class="ui center aligned form">
+<?php
+$usuario='';
 
-                        <div class="field">
-                            <label>Usuario</label>
-                            <input type="email" placeholder="joe@schmoe.com">
-                        </div>
-                        <div class="field">
-                            <label>Contraseña</label>
-                            <input type="password" placeholder="">
-                        </div>
-                        <div class="field">
-                                <div class="ui checkbox">
-                                    <input type="checkbox" tabindex="0" class="hidden">
-                                    <label>Recordar contraseña</label>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="field">
-                    <!--<div class="ui submit button">Ingresar</div>-->
-                    <input class="ui submit button" type="submit" value="Ingresar">
-                </div>
-                <br>
-                <label>¿Olvidaste tu <a href="">usuario</a> o <a href="">contraseña</a>?</label>
-            </div>
-           </form>
-        </div>
-    </div>
-</body>
+if($_POST){
+//var_dump($_POST); exit;
+$data=json_decode(file_get_contents('data.json'),true);
+
+  foreach ($data['usuarios'] as $key => $value) {
+    $mensaje='';
+    if(password_verify($_POST['pass'],$value['pass']) && $_POST['usuario']===$value['email']){
+        header('location:indexLogin.php');
+    }else{
+          $mensaje='Por favor verifica tus datos';
+    }
+  }
+echo $mensaje;
+}
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="" action="Login.php" method="post">
+      <label for="">Usuario</label>
+    <input type="text" name="usuario" value="">
+    <label for="">Contraseña</label>
+    <input type="password" name="pass" value="">
+    <input type="submit" name="enviar" value="">
+    </form>
+  </body>
 </html>
