@@ -24,7 +24,7 @@ $aceptarterminos='';
 
 //Validacion datos
 if($_POST){
-  //var_dump($_POST); exit;
+  // var_dump($_POST); exit;
     //Validamos nombre
     if(strlen($_POST['nombre'])==0){
       $nombrevacio = $campovacio;
@@ -70,7 +70,8 @@ if($_POST){
       $aceptarterminos= 'Debes aceptar los terminos y condiciones';
     }
 
-    if ($nombre == $_POST['nombre'] && $apellido = $_POST['apellido'] && $email = $_POST['email'] && $pass == $confirmapass && $checkbox == $_POST['checked']) {
+    if ($nombrevacio=='' && $apellidovacio=='' && $emailvacio=='' && $formatonovalido=='' && $passvacio=='' && $confirmavacio=='' && $passcaract=='' && $nocoincide == '' && $aceptarterminos==''){
+
 
     //Almacenamos datos para generar archivo json post validacion
       $usuario = [
@@ -82,6 +83,12 @@ if($_POST){
       ];
       //Creamos archivo json vacio y decodificamos a un array php
       $data=json_decode(file_get_contents('data.json'),true);
+
+      foreach ($data['usuarios'] as $key => $value) {
+      $mensaje='';
+      if($_POST['email']===$value['email']){
+        $mensaje = "Ya existe una cuenta registrada con esa dirección de correo.";
+      } else {
       //Agregarmos un usuario nuevo
       $data['usuarios'][]=$usuario;
       //Codificamos y almacenamos array php a json de nuevo
@@ -89,11 +96,10 @@ if($_POST){
 
     //Redireccionamos a pagina de inicio
     header('location:Login.php');
-    // }else{
-    //   echo 'Algo falló.';
-    // }
-    }
-}
+      }
+
+    }  $mensaje;
+}}
 
 ?>
 
@@ -120,6 +126,7 @@ if($_POST){
     <div class="ui grid">
       <div class="column">
         <div class="ui segment">
+          <h1><?= $mensaje ?></h1>
             <h4>¡Registrate con tu dirección de email!</h4>
             <div class="ui secondary segment">
                 <h4>Datos de tu cuenta</h4>
@@ -148,7 +155,7 @@ if($_POST){
                         <div class="field">
                           <div class="required field">
                             <label>Crea tu contraseña</label>
-                            <input type="text" name="pass" value="<?=$pass?>" placeholder="Mínimo 8 caracteres">
+                            <input type="password" name="pass" value="<?=$pass?>" placeholder="Mínimo 8 caracteres">
                             <span><?=$passvacio?></span>
                             <span><?=$passcaract?></span>
                           </div>
@@ -156,7 +163,7 @@ if($_POST){
                         <div class="field">
                           <div class="required field">
                             <label>Confirma tu contraseña</label>
-                            <input type="text" name="confirmapass" value="<?=$confirmapass?>" placeholder="Mínimo 8 caracteres">
+                            <input type="password" name="confirmapass" value="<?=$confirmapass?>" placeholder="Mínimo 8 caracteres">
                             <span><?=$confirmavacio?></span>
                             <span><?=$confirmcaract?></span>
                             <span><?=$nocoincide?></span>
