@@ -1,0 +1,250 @@
+body{
+  background-color: #000;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  color: #fff;
+}
+h1{
+  color: #581845;
+  font-weight: 900;
+  padding-top: 5px;
+  letter-spacing: 5px;
+}
+.iso{
+  color:#fff;
+}
+h2{
+  font-size: 3em;
+}
+h3{
+  font-size: 1.1em;
+  padding: 10px 0 0 0;
+  text-transform: uppercase;
+}
+h4{
+  font-size: 1.5em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+h5{
+  font-size: 1em;
+}
+.divisor{
+  border-top: 1px solid #aaa;
+  margin: 30px auto;
+  display: block;
+}
+.navbar-dark .navbar-nav .nav-link{
+  color: #fff;
+}
+.nav-link{
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+ul.principal{
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  margin: 50px 0 -30px 0;
+}
+ul.principal li{
+  list-style: none;
+  text-align: center;
+  margin-bottom: 50px;
+  /* float: left; */
+}
+ul.principal li a{
+  color: #fff;
+  text-decoration: none;
+  transition: .5s;
+}
+ul.principal li a:hover{
+  color: #aaa;
+  transition: .5s;
+}
+nav i{
+  color: #000;
+  font-size: 30px;
+  padding: 10px 5px 10px 5px;
+}
+.navbar-toggler{
+  background-color: #581845;
+}
+.navbar-toggler:focus,
+.navbar-toggler:hover {
+  border: none;
+}
+main{
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: auto;
+}
+section{
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: auto;
+  background-color: #eee;
+  color: #333;
+}
+.carousel-item {
+  height: 90vh;
+  min-height: 350px;
+}
+img{
+  display:block;
+  margin:auto;
+}
+.slide{
+  border-top: 2px solid #581845;
+  border-bottom: 2px solid #581845;
+}
+.container{
+    width: 100%;
+}
+input[type="text"]{
+  width: 100%;
+  border: 2px solid #aaa;
+  border-radius: 7px;
+  box-sizing: border-box;
+  margin: 30px 0 0 0;
+  padding: 8px;
+}
+input[type="text"]:focus{
+  border: 2px solid #581845;
+  box-shadow: 0 0 10px 0 #581845;
+}
+.inputWithIcon input[type="text"]{
+  padding-left: 40px;
+}
+.inputWithIcon{
+  position: relative;
+  text-align: center;
+}
+.inputWithIcon i{
+  position: absolute;
+  left: 0;
+  top: 35px;
+  padding: 9px 8px;
+  color: #aaa;
+  transition: .9s;
+}
+.cards{
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-around;
+}
+.card-img-top{
+  width: 75%;
+  justify-content: flex-start;
+}
+.card-title{
+  text-align: center;
+}
+.card-body{
+  padding: 15px 0;
+}
+.btn-cards{
+  width: 50%;
+  display:block;
+  margin:10px auto 30px auto;
+  font-size: 0.8em;
+  background-color: #581845;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius:7px;
+  transition: .5s;
+}
+.btn-cards:hover{
+  color: #581845;
+  border: 1px solid #581845;
+  box-sizing: border-box;
+  background-color: #fff;
+  text-decoration: none;
+  transition: .5s;
+}
+footer{
+  height: 30vh;
+  overflow: hidden;
+  padding: 30px 0;
+}
+ul.footer{
+  margin: 15px 0 0 0;
+}
+ul.footer li{
+  text-decoration: none;
+  list-style: none;
+  text-align: right;
+  text-transform: uppercase;
+}
+ul.footer li a{
+  color: #aaa;
+}
+ul.footer li a:hover{
+  color: #fff;
+  text-decoration: none;
+}
+@media (min-width: 768px){
+  /* Breakpoints 576 768 992 1200 */
+  .nav-link{
+    font-size: 1em;
+    padding: 0;
+  }
+  .nav-item{
+    border-right: 1px solid #fff;
+  }
+}
+@media (min-width: 992px){
+  /* Breakpoints 576 768 992 1200 */
+  .nav-link{
+    font-size: 1.2em;
+    padding: 0;
+  }
+  .nav-item{
+    border-right: 1px solid #fff;
+  }
+  .nav-item:last-child {
+    border-right: none;
+  }
+  h2{
+    font-size: 5em;
+  }
+  h3{
+    font-size: 1.4em;
+  }
+  h4{
+    font-size: 1.8em;
+  }
+  img{
+    display:block;
+    margin:auto;
+    width: 100%;
+  }
+  .card-title{
+    height: 50px;
+    text-align: left;
+  }
+  .card-img-top{
+    width: 100%;
+  }
+  .btn-cards{
+    margin-bottom: 50px;
+    display:block;
+    margin-left:0;
+    width: 70%;
+    font-size: 1em;
+  }
+  ul.principal{
+    margin: 100px 0 100px 0;
+  }
+  ul.principal li{
+    margin-bottom: 0;
+    /* float: left; */
+  }
+}
