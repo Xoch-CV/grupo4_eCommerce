@@ -1,106 +1,85 @@
 <?php
-//Variables para persistencia de datos
-$nombre='';
-$apellido='';
-$email='';
-$pass='';
-$confirmapass='';
-$button='';
-$checkbox='';
 
-//Variables para validacion datos
-$campovacio='Debes completar este campo';
-$numcaract='El password debe tener al menos 8 caracteres';
-$nombrevacio='';
-$apellidovacio='';
-$emailvacio='';
-$formatonovalido='';
-$passvacio='';
-$confirmavacio='';
-$passcaract='';
-$confirmcaract='';
-$nocoincide='';
-$aceptarterminos='';
+function user_exists(array $users, string $email) {
+  foreach ($users as $user) {
+    if ($user['email'] === $email) {
+      return true;
+    }
+  }
+  return false;
+}
+
+$errors = [];
+$usuario['foto'] = 'files/Avatar.jpg';
 
 //Validacion datos
+$mensaje='';
+
 if($_POST){
   // var_dump($_POST); exit;
     //Validamos nombre
-    if(strlen($_POST['nombre'])==0){
-      $nombrevacio = $campovacio;
+    if(empty($_POST['nombre'])){
+      $errors['nombre'] = 'Debes completar este campo.';
     }else{
-      $nombre = $_POST['nombre'];
+      $usuario['nombre'] = $_POST['nombre'];
     }
     //Validamos apellido
-    if(strlen($_POST['apellido'])==0){
-      $apellidovacio = $campovacio;
+    if(empty($_POST['apellido'])){
+      $errors['apellido'] = 'Debes completar este campo.';
     }else{
-      $apellido = $_POST['apellido'];
+      $usuario['apellido'] = $_POST['apellido'];
     }
     //Validamos email
-    if(strlen($_POST['email'])==0){
-      $emailvacio = $campovacio;
+    if(empty($_POST['email'])){
+      $errors['email'] [] = 'Este campo está vacío.';
     }elseif(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
-       $email = $_POST['email'];
+       $usuario['email'] = $_POST['email'];
     }else{
-          $formatonovalido = 'El formato no es correcto';
+          $errors['email'][] = 'El formato no es correcto';
     }
     //Validamos password
-    if(strlen($_POST['pass'])==0){
-      $passvacio = $campovacio;
-    }elseif(strlen($_POST['pass'])>=8){
-        $pass = $_POST['pass'];
-    }else{
-      $passcaract = $numcaract;
-    }
-    //Verificamos contraseña
-    if(strlen($_POST['confirmapass'])==0){
-      $confirmavacio = $campovacio;
+
+
+    if(empty($_POST['pass'])){
+      $errors['pass'] [] = 'Este campo está vacío.';
+    }elseif(strlen($_POST['pass'])<8){
+      $errors['pass'] [] = 'La contraseña tiene que tener un mínimo de 8 caracteres.';
+    } else {
+      if(empty($_POST['confirmapass'])){
+      $errors['confirmapass'] [] = 'Debes completar este campo.';
     }elseif(strlen($_POST['confirmapass'])<8){
-        $confirmcaract = $numcaract;
+        $errors['confirmapass'][] = 'La contraseña tiene que tener un mínimo de 8 caracteres.';
       }else{
-        if($_POST['confirmapass']==$pass){
-            $confirmapass = $_POST['confirmapass'];
+        if($_POST['confirmapass']==$_POST['pass']){
+            $usuario['pass'] = password_hash($_POST['pass'],PASSWORD_DEFAULT);
         }else {
-          $nocoincide = 'Las contraseñas no coinciden';
+          $errors['pass'][] = 'Las contraseñas no coinciden';
         }
+      }
       }
     //Validamos checkbox
     if(!isset($_POST['checkbox'])){
-      $aceptarterminos= 'Debes aceptar los terminos y condiciones';
+      $errors ['checkbox'] = 'Debes aceptar los terminos y condiciones';
     }
 
-    if ($nombrevacio=='' && $apellidovacio=='' && $emailvacio=='' && $formatonovalido=='' && $passvacio=='' && $confirmavacio=='' && $passcaract=='' && $nocoincide == '' && $aceptarterminos==''){
+    if (count($errors)== 0){
 
-
-    //Almacenamos datos para generar archivo json post validacion
-      $usuario = [
-        'nombre' => $_POST['nombre'],
-        'apellido' => $_POST['apellido'],
-        'email' => $_POST['email'],
-        'pass' => password_hash($_POST['pass'],PASSWORD_DEFAULT),
-        'foto' => null,
-      ];
       //Creamos archivo json vacio y decodificamos a un array php
       $data=json_decode(file_get_contents('data.json'),true);
 
-      foreach ($data['usuarios'] as $key => $value) {
-      $mensaje='';
-      if($_POST['email']===$value['email']){
+      if (user_exists($data['usuarios'], $usuario['email'])) {
         $mensaje = "Ya existe una cuenta registrada con esa dirección de correo.";
       } else {
-      //Agregarmos un usuario nuevo
-      $data['usuarios'][]=$usuario;
-      //Codificamos y almacenamos array php a json de nuevo
-      file_put_contents('data.json',json_encode($data,JSON_PRETTY_PRINT));
-
-    //Redireccionamos a pagina de inicio
-    header('location:Login.php');
+        $usuario['id']=count($data['usuarios'])+1;
+        //Agregarmos un usuario nuevo
+        $data['usuarios'][]=$usuario;
+        //Codificamos y almacenamos array php a json de nuevo
+        file_put_contents('data.json', json_encode($data,JSON_PRETTY_PRINT));
+        //Redireccionamos a pagina de inicio
+        header('location:Loginform.php');
       }
-
-    }  $mensaje;
-}}
-
+  }
+}
 ?>
 
 
@@ -126,7 +105,7 @@ if($_POST){
     <div class="ui grid">
       <div class="column">
         <div class="ui segment">
-          <h1><?= $mensaje ?></h1>
+          <h1><?=$mensaje?></h1>
             <h4>¡Registrate con tu dirección de email!</h4>
             <div class="ui secondary segment">
                 <h4>Datos de tu cuenta</h4>
@@ -135,38 +114,34 @@ if($_POST){
                       <div class="field">
                           <div class="required field">
                               <label>Nombre</label>
-                              <input type="text" name="nombre" value="<?=$nombre?>" placeholder="Nombre">
-                              <span><?=$nombrevacio?></span>
+                              <input type="text" name="nombre" value="<?=isset($_POST['nombre']) ? $_POST['nombre'] : ''?>" placeholder="Nombre">
+                              <span><?= isset($errors['nombre']) ? $errors['nombre'] : '' ?></span>
                           </div>
                               <label>Apellido</label>
-                              <input type="text" name="apellido" value="<?=$apellido?>"placeholder="Apellido">
-                              <span><?=$apellidovacio?></span>
+                              <input type="text" name="apellido" value="<?=isset($_POST['apellido']) ? $_POST['apellido'] : ''?>"placeholder="Apellido">
+                              <span><?= isset($errors['apellido']) ? $errors['apellido'] : '' ?></span>
                       </div>
                   </div>
                     <div class="field">
                         <div class="required field">
                             <label>Correo electrónico</label>
                             <!--type="text" para que no haga la validacion el navegador-->
-                            <input type="text" name="email" value="<?=$email?>" placeholder="joe@schmoe.com">
-                            <span><?=$emailvacio?><br></span>
-                            <span><?=$formatonovalido?></span>
+                            <input type="text" name="email" value="<?=isset($_POST['email']) ? $_POST['email'] : ''?>" placeholder="joe@schmoe.com">
+                            <span><?= isset($errors['email']) ? $errors['email'][0] : '' ?></span>
                         </div>
                     </div>
                         <div class="field">
                           <div class="required field">
                             <label>Crea tu contraseña</label>
-                            <input type="password" name="pass" value="<?=$pass?>" placeholder="Mínimo 8 caracteres">
-                            <span><?=$passvacio?></span>
-                            <span><?=$passcaract?></span>
+                            <input type="password" name="pass" value="<?=isset($_POST['pass']) ? $_POST['pass'] : ''?>" placeholder="Mínimo 8 caracteres">
+                            <span><?= isset($errors['pass']) ? $errors['pass'][0] : '' ?></span>
                           </div>
                         </div>
                         <div class="field">
                           <div class="required field">
                             <label>Confirma tu contraseña</label>
-                            <input type="password" name="confirmapass" value="<?=$confirmapass?>" placeholder="Mínimo 8 caracteres">
-                            <span><?=$confirmavacio?></span>
-                            <span><?=$confirmcaract?></span>
-                            <span><?=$nocoincide?></span>
+                            <input type="password" name="confirmapass" value="<?=isset($_POST['pass']) ? $_POST['pass'] : ''?>" placeholder="Mínimo 8 caracteres">
+                            <?= isset($errors['pass']) ? $errors['pass'][0] : '' ?></span>
                           </div>
                         </div>
                     </div>
@@ -176,7 +151,7 @@ if($_POST){
                             <div class="ui checkbox">
                                 <input type="checkbox" name="checkbox" value="checked" class="">
                                 <label>Estoy de acuerdo con los terminos y condiciones</label>
-                                <span><?=$aceptarterminos?></span>
+                                <span><?= isset($errors['checkbox']) ? $errors['checkbox'] : '' ?></span>
                             </div>
                             <br>
                             <!--<div class="ui checkbox">
