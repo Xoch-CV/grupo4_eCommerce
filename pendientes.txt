@@ -1,0 +1,16 @@
+PENDIENTES
+--Probar tomar los datos del array
+2. En login, como resolver que desaparezca la session almacenada hasta que refrescas la página.
+- agregar ¿olvidaste contraseña?
+3. Generar la pagina de perfil ( completar el resto de los datos) 
+- Agragar más campos de "Datos Personales<"
+4. En pagina registro, agregar pregunta secreta.
+4. En pagina index 
+-Los botones login y registro no deberían ser accesibles si el usuario ya está
+logueado.
+-Desloguearse:
+<input type="submit" name="salir" value="Cerrar sesion">
+  if($_POST['salir']=='Cerrar sesion'){
+session_start();
+session_destroy();
+  }

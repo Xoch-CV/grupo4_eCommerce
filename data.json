@@ -1,5 +1,28 @@
 {
-  "usuarios":[
-    
-  ]
+    "usuarios": [
+        {
+            "foto": "files\/1.jpg",
+            "nombre": "Xochiquetzal",
+            "apellido": "Cruz",
+            "email": "xoch.cv@gmail.com",
+            "pass": "$2y$10$3JkrDA8TS1zyQSmyTsbRcetzhvoaO.DWmWdf77AI5EpgJaJiMCggG",
+            "id": 1
+        },
+        {
+            "foto": "files\/2.jpg",
+            "nombre": "Nico",
+            "apellido": "Nico",
+            "email": "nico.gelabert@gmail.com",
+            "pass": "$2y$10$IMLwYhQi1uaAtDfeKMQlaeuSH76JkIi6xK92ISZqOZc5cBjqg\/JA2",
+            "id": 2
+        },
+        {
+            "foto": "files\/Avatar.jpg",
+            "nombre": "Camilo",
+            "apellido": "Camilo",
+            "email": "camilo@gmail.com",
+            "pass": "$2y$10$Y7IFvXd7GqjEiNRDdCNztuNzKUiq\/uVsHr1Lz6WtgtCA4Mt6jrVsu",
+            "id": 3
+        }
+    ]
 }
