@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+require "functions.php";
+
+setcookie(COOKIE_REMEMBER, "", -1);
+
 session_destroy();
-header('location:indexLogin.php');
-?>
+
+header('location:index.php');

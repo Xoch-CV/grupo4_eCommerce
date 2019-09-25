@@ -18,10 +18,10 @@ if (strlen($_POST['email'])==0 || strlen($_POST['pass'])==0) {
 
         //Para recordar los datos de la cuenta (queda para el siguiente modulo)
         if(isset($_POST['checkbox'])) {
-          setcookie('user_logged', $_POST['email'], time()+3600);
+          setcookie(COOKIE_REMEMBER, $_POST['email'], time()+3600);
         }
 
-        header("location:indexLogin.php");
+        header("location:index.php");
         break;
       }else{
         $clase ='ui negative attached message';
@@ -41,7 +41,7 @@ if (strlen($_POST['email'])==0 || strlen($_POST['pass'])==0) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="Semantic_ui/project/semantic/dist/semantic.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/stylesform.css">
+    <link rel="stylesheet" href="css/styleform.css">
     <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -51,7 +51,7 @@ if (strlen($_POST['email'])==0 || strlen($_POST['pass'])==0) {
     <title>Login</title>
 </head>
 <body>
-  <div class="ui login center aligned grid">
+  <div class="ui center aligned grid">
     <div class="column">
       <form class="ui form segment" action="Loginform.php" method="post">
         <h4>Ingresa a tu cuenta</h4>

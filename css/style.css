@@ -31,6 +31,11 @@ h4{
 h5{
   font-size: 1em;
 }
+h6{
+  font-size: 100px;
+  font-weight: lighter;
+  color:#581845;
+}
 .divisor{
   border-top: 1px solid #aaa;
   margin: 30px auto;
@@ -43,6 +48,7 @@ h5{
   font-size: 1.5em;
   text-transform: uppercase;
 }
+
 ul.principal{
   height: auto;
   display: flex;
@@ -78,6 +84,50 @@ nav i{
 .navbar-toggler:focus,
 .navbar-toggler:hover {
   border: none;
+}
+.ui.button{
+   background-color:#581845;
+   color: white;
+}
+div.ui.center.aligned.grid{
+/background-color: #020003;/
+height: 700px;
+/height:100%;/
+}
+div.column{
+ align-self: center;
+ box-sizing: border-box;
+ display: block;
+ flex-direction:column;
+ max-width: 450px;
+ position: relative;
+ width: 450px;
+ vertical-align: middle;
+}
+form.ui.form.segment{
+ align: center;
+ box-sizing: border-box;
+ display: block;
+ flex-direction:column;
+ max-width: 450px;
+ position: relative;
+ text-align: left;
+}
+#login{
+  display: flex;
+}
+#login li img{
+  border-radius: 50%;
+  width: 50px;
+}
+.dropdown-menu{
+  background-color: #000;
+}
+.dropdown-item{
+  color: #fff;
+}
+.dropdown-divider{
+  border-top: 1px solid #581845;
 }
 main{
   overflow: hidden;
@@ -200,6 +250,9 @@ ul.footer li a:hover{
   .nav-item{
     border-right: 1px solid #fff;
   }
+  .dropdown-toggle{
+    margin-top: 0.4em;
+  }
 }
 @media (min-width: 992px){
   /* Breakpoints 576 768 992 1200 */
@@ -207,11 +260,18 @@ ul.footer li a:hover{
     font-size: 1.2em;
     padding: 0;
   }
+  .nav-link2{
+    font-size: 2em;
+  }
   .nav-item{
     border-right: 1px solid #fff;
   }
   .nav-item:last-child {
     border-right: none;
+  }
+  .nav-item2{
+    text-transform: none;
+    text-align: left;
   }
   h2{
     font-size: 5em;
@@ -247,5 +307,8 @@ ul.footer li a:hover{
   ul.principal li{
     margin-bottom: 0;
     /* float: left; */
+  }
+  .dropdown-toggle{
+    margin-top: 0.4em;
   }
 }

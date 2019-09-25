@@ -91,7 +91,7 @@ if($_POST){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="Semantic_ui/project/semantic/dist/semantic.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styleform.css">
     <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -101,9 +101,9 @@ if($_POST){
     <title>Registro</title>
 </head>
 <body>
-<form class="" action="Registro.php" method="post">
-    <div class="ui grid">
+    <div class="ui center aligned grid">
       <div class="column">
+        <form class="ui form segment" action="Registro.php" method="post">
         <div class="ui segment">
           <h1><?=$mensaje?></h1>
             <h4>¡Registrate con tu dirección de email!</h4>
