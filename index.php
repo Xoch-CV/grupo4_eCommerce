@@ -35,13 +35,13 @@ if(isset($_SESSION['user'])){
       <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Inicio</a>
+            <a class="nav-link" href="index.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">f.a.q.</a>
+            <a class="nav-link" href="Preguntas_frec.php">f.a.q.</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contacto</a>
+            <a class="nav-link" href="Contacto.php">Contacto</a>
           </li>
         </ul>
       </div>
@@ -195,19 +195,19 @@ if(isset($_SESSION['user'])){
         <div class="col-4">
           <ul class="footer">
             <li>
-              <a href="#">Inicio</a>
+              <a href="index.php">Inicio</a>
             </li>
             <li>
-              <a href="#">f.a.q.</a>
+              <a href="Preguntas_frec.php">f.a.q.</a>
             </li>
             <li>
-              <a href="#">Contacto</a>
+              <a href="Contacto.php">Contacto</a>
             </li>
             <li>
-              <a href="#">log in</a>
+              <a href="Loginform.php">log in</a>
             </li>
             <li>
-              <a href="#">sign up</a>
+              <a href="Registro.php">sign up</a>
             </li>
           </ul>
         </div>

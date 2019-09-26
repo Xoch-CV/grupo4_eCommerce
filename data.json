@@ -1,27 +1,27 @@
 {
     "usuarios": [
         {
-            "foto": "files\/1.jpg",
-            "nombre": "Xochiquetzal",
-            "apellido": "Cruz",
-            "email": "xoch.cv@gmail.com",
-            "pass": "$2y$10$3JkrDA8TS1zyQSmyTsbRcetzhvoaO.DWmWdf77AI5EpgJaJiMCggG",
-            "id": 1
-        },
-        {
             "foto": "files\/2.jpg",
-            "nombre": "Nico",
-            "apellido": "Nico",
+            "nombre": "nico",
+            "apellido": "gela",
             "email": "nico.gelabert@gmail.com",
-            "pass": "$2y$10$IMLwYhQi1uaAtDfeKMQlaeuSH76JkIi6xK92ISZqOZc5cBjqg\/JA2",
+            "pass": "$2y$10$vegWeOe75GV4Z2vLcnzQh.XR29Nzd.KCyzSVVLj4SssJtbP6cieTe",
             "id": 2
         },
         {
-            "foto": "files\/Avatar.jpg",
+            "foto": "files\/3.jpg",
+            "nombre": "viki",
+            "apellido": "masa",
+            "email": "viki.masa@gmail.com",
+            "pass": "$2y$10$yR\/ny1sjb8MCEbLLWwDHP.or\/IEZqVQ9SvhnBJF5CijUZalf0fB4a",
+            "id": 3
+        },
+        {
+            "foto": "files\/3.jpg",
             "nombre": "Camilo",
-            "apellido": "Camilo",
-            "email": "camilo@gmail.com",
-            "pass": "$2y$10$Y7IFvXd7GqjEiNRDdCNztuNzKUiq\/uVsHr1Lz6WtgtCA4Mt6jrVsu",
+            "apellido": "Perez",
+            "email": "Camilo@hotmail.com",
+            "pass": "$2y$10$1MYUtxFZdtz5AjUAkpUbR.42qAZMY.\/rUpXwNxvoPvH5Z8\/\/jJfmW",
             "id": 3
         }
     ]
