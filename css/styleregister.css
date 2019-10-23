@@ -1,0 +1,114 @@
+html, body{
+  height:100%;
+ }
+body{
+  background-color: #000;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  background-image:linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)), url('../img/concierto-min.jpg');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+}
+
+.container{
+  margin: 50px auto;
+  box-sizing: border-box;
+}
+.header{
+  text-align: center;
+}
+a{
+  text-decoration: none;
+  color: #fff;
+}
+a:hover{
+  text-decoration: none;
+  color: #581845;
+}
+input{
+  border: none;
+  background: none;
+  color: #fff;
+  padding: 0 0 10px 5px;
+}
+input:focus{
+  outline:none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.inputregister{
+  border-bottom: 1px solid #fff;
+  padding: 25px 10px 0 0;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.checkbox{
+  padding: 25px 10px 0 8px;
+  margin: 0 auto;
+}
+.button{
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 50px;
+  margin: 25px auto;
+  padding: 0 0 0 0;
+  height: 50px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.button2{
+  border-radius: 50px;
+  margin: 25px auto;
+  padding: 0 0 0 0;
+  height: 50px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: 14px;
+  background-color:#581845;
+}
+.button:hover{
+  background-color: #fff;
+  color: #581845;
+}
+.button2:hover{
+  background-color: #fff;
+  color: #581845;
+}
+img.register{
+  display: none;
+}
+h1{
+  color: #581845;
+  font-weight: 900;
+  padding-top: 5px;
+  letter-spacing: 5px;
+}
+.iso{
+  color:#fff;
+}
+.error{
+  box-sizing: border-box;
+  padding: 0 0 0 100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px){
+  img.register{
+    display: none;
+  }
+}
+@media (min-width: 992px){
+  img.register{
+    display: block;
+  }
+}
