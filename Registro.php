@@ -1,6 +1,4 @@
 <?php
-
-
 function user_exists(array $users, string $email) {
   foreach ($users as $user) {
     if ($user['email'] === $email) {
@@ -83,127 +81,102 @@ if($_POST){
 }
 ?>
 
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="Semantic_ui/project/semantic/dist/semantic.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous">
-    </script>
+    <title></title>
+    <link href="bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap" rel="stylesheet">
     <link href="fontawesome/css/all.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,900&display=swap" rel="stylesheet">
-    <script src="Semantic_ui/project/semantic/dist/semantic.min.js"></script>
-    <link rel="stylesheet" href="css/styleform.css">
-    <title>Registro</title>
-</head>
-<body>
-  <nav class="navbar navbar-expand-md navbar-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.php">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Preguntas_frec.php">f.a.q.</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Contacto.php">Contacto</a>
-        </li>
-      </ul>
-    </div>
-    <div class="order-0">
-      <h1>T<span class="iso">!</span>CKET</h1>
-    </div>
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-      <ul class="navbar-nav ml-auto">
+    <link href="css/styleregister.css" rel="stylesheet" media="screen">
 
-        <li class="nav-item">
-          <a class="nav-link" href="Loginform.php">Log in</a>
-        </li>
-      </div>
-
-      </ul>
+  </head>
+  <body>
+    <div class="header">
+      <a href="index.php"><h1>T<span class="iso">!</span>CKET</h1></a>
     </div>
-  </nav>
-    <div class="ui center aligned grid">
-      <div class="column">
-        <form class="ui form segment" action="Registro.php" method="post">
-        <div class="ui segment">
-          <h2><?=$mensaje?></h2>
-            <h4>¡Registrate con tu dirección de email!</h4>
-            <div class="ui secondary segment">
-                <h4>Datos de tu cuenta</h4>
-                <div class="ui form">
-                  <div class="fields">
-                      <div class="field">
-                          <div class="required field">
-                              <label>Nombre</label>
-                              <input type="text" name="nombre" value="<?=isset($_POST['nombre']) ? $_POST['nombre'] : ''?>" placeholder="Nombre">
-                              <span><?= isset($errors['nombre']) ? $errors['nombre'] : '' ?></span>
-                          </div>
-                              <label>Apellido</label>
-                              <input type="text" name="apellido" value="<?=isset($_POST['apellido']) ? $_POST['apellido'] : ''?>"placeholder="Apellido">
-                              <span><?= isset($errors['apellido']) ? $errors['apellido'] : '' ?></span>
-                      </div>
-                  </div>
-                    <div class="field">
-                        <div class="required field">
-                            <label>Correo electrónico</label>
-                            <!--type="text" para que no haga la validacion el navegador-->
-                            <input type="text" name="email" value="<?=isset($_POST['email']) ? $_POST['email'] : ''?>" placeholder="joe@schmoe.com">
-                            <span><?= isset($errors['email']) ? $errors['email'][0] : '' ?></span>
-                        </div>
-                    </div>
-                        <div class="field">
-                          <div class="required field">
-                            <label>Crea tu contraseña</label>
-                            <input type="password" name="pass" value="<?=isset($_POST['pass']) ? $_POST['pass'] : ''?>" placeholder="Mínimo 8 caracteres">
-                            <span><?= isset($errors['pass']) ? $errors['pass'][0] : '' ?></span>
-                          </div>
-                        </div>
-                        <div class="field">
-                          <div class="required field">
-                            <label>Confirma tu contraseña</label>
-                            <input type="password" name="confirmapass" value="<?=isset($_POST['pass']) ? $_POST['pass'] : ''?>" placeholder="Mínimo 8 caracteres">
-                            <?= isset($errors['pass']) ? $errors['pass'][0] : '' ?></span>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui form">
-                        <div class="required field">
-                            <div class="ui checkbox">
-                                <input type="checkbox" name="checkbox" value="checked" class="">
-                                <label>Estoy de acuerdo con los terminos y condiciones</label>
-                                <span><?= isset($errors['checkbox']) ? $errors['checkbox'] : '' ?></span>
-                            </div>
-                            <br>
-                            <!--<div class="ui checkbox">
-                                <input type="checkbox" tabindex="0" class="hidden">
-                                <label>Recordar mi usuario</label>
-                            </div>
-                          -->
-                        </div>
-                </div>
-                <br>
-                <div class="field">
-                    <input class="ui submit button" type="submit" name="button" value="Enviar">
-                </div>
-            </div>
+
+    <div class="container-fluid container">
+
+        <div class="header">
+          <h3>Registrate</h3>
+          <h6><?=$mensaje?></h6>
         </div>
+
+      <div class="row">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-2">
+        </div>
+
+        <div class="col-10 col-sm-10 col-md-10 col-lg-8">
+          <form action="Registro.php" method="POST">
+            <div class="row">
+              <div class="col-11 col-sm-12 col-md-10 col-lg-5 inputregister">
+                <label for="name"><i class="fas fa-user"></i></label>
+                <input type="text" name="nombre" value="<?=isset($_POST['nombre']) ? $_POST['nombre'] : ''?>" placeholder="Nombre"/><br>
+                <span><?= isset($errors['nombre']) ? $errors['nombre'] : '' ?></span>
+              </div>
+              <div class="col-11 col-sm-12 col-md-10 col-lg-5 inputregister">
+                <label for="name"><i class="far fa-user"></i></label>
+                <input type="text" name="apellido" value="<?=isset($_POST['apellido']) ? $_POST['apellido'] : ''?>" placeholder="Apellido"/><br>
+                <span><?= isset($errors['apellido']) ? $errors['apellido'] : '' ?></span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-11 col-sm-12 col-md-10 col-lg-11 inputregister">
+                <label for="email"><i class="fas fa-envelope"></i></label>
+                <input type="text" name="email" value="<?=isset($_POST['email']) ? $_POST['email'] : ''?>" placeholder="joe@schmoe.com"><br>
+                <span><?= isset($errors['email']) ? $errors['email'][0] : '' ?></span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-11 col-sm-12 col-md-10 col-lg-5 inputregister">
+                <label for="pass"><i class="fas fa-unlock"></i></label>
+                <input type="password" name="pass" value="<?=isset($_POST['pass']) ? $_POST['pass'] : ''?>" placeholder="Mínimo 8 caracteres"><br>
+                <span><?= isset($errors['pass']) ? $errors['pass'][0] : '' ?></span>
+              </div>
+
+              <div class="col-11 col-sm-12 col-md-10 col-lg-5 inputregister">
+                <label for="re-pass"><i class="fas fa-lock"></i></label>
+                <input type="password" name="confirmapass" value="<?=isset($_POST['pass']) ? $_POST['pass'] : ''?>" placeholder="Mínimo 8 caracteres"><br>
+                <?= isset($errors['pass']) ? $errors['pass'][0] : '' ?></span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-11 col-sm-12 col-md-10 col-lg-11 checkbox">
+                <input type="checkbox" name="checkbox" value="checked"/>
+                <span>Estoy de acuerdo con los  <a href="#" class="term-service">Términos y condiciones.</span></a><br>
+                <span><?= isset($errors['checkbox']) ? $errors['checkbox'] : '' ?></span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6 col-sm-6 col-md-6 col-lg-6 ">
+                <input class="button2" type="submit" name="boton" value="Registrarme">
+              </div>
+              <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                <a class="button" href="Loginform.php">Ya tengo usuario</a>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <div class="col-10 col-sm-10 col-md-10 col-lg-2">
+          <img class="register" src="img/signo.png" alt="">
+        </div>
+
+
       </div>
+
     </div>
-</form>
-</body>
+
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </html>

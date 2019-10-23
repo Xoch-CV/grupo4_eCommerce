@@ -35,99 +35,89 @@ if (strlen($_POST['email'])==0 || strlen($_POST['pass'])==0) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="Semantic_ui/project/semantic/dist/semantic.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous">
-    </script>
+    <title></title>
+    <link href="bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap" rel="stylesheet">
     <link href="fontawesome/css/all.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,900&display=swap" rel="stylesheet">
-    <script src="Semantic_ui/project/semantic/dist/semantic.min.js"></script>
-    <link rel="stylesheet" href="css/styleform.css">
-    <title>Login</title>
-</head>
-<body>
-  <nav class="navbar navbar-expand-md navbar-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.php">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Preguntas_frec.php">f.a.q.</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Contacto.php">Contacto</a>
-        </li>
-      </ul>
-    </div>
-    <div class="order-0">
-      <h1>T<span class="iso">!</span>CKET</h1>
-    </div>
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-      <ul class="navbar-nav ml-auto">
+    <link href="css/styleregister.css" rel="stylesheet" media="screen">
 
-        <li class="nav-item">
-          <a class="nav-link" href="Registro.php">sign up</a>
-        </li>
-      </div>
-
-      </ul>
+  </head>
+  <body>
+    <div class="header">
+      <a href="index.php"><h1>T<span class="iso">!</span>CKET</h1></a>
     </div>
-  </nav>
-  <div class="ui center aligned grid">
-    <div class="column">
-      <form class="ui form segment" action="Loginform.php" method="post">
-        <h4>Ingresa a tu cuenta</h4>
-        <div class="ui segment">
-          <div class="<?=$clase?>">
-            <div class="header">
-                <h5><?=$mensaje?></h5>
-            </div>
+
+      <div class="container-fluid container">
+
+          <div class="header">
+            <h3>Ingresá con tus datos</h3>
+            <h6><?=$mensaje?></h6>
           </div>
-          <div class="ui secondary attached segment">
-            <div class="ui center aligned form">
-              <div class="field">
-                <label>Email</label>
-                <input type="text" name="email" value="" placeholder="">
-              </div>
-              <div class="field">
-                <label>Contraseña</label>
-                <input type="password" name="pass" value="">
-              </div>
-              <div class="field">
-                <div class="ui checkbox">
-                  <input type="checkbox" name="checkbox" value="checked">
-                  <label>Recordar mi cuenta</label>
+
+        <div class="row">
+          <div class="col-1 col-sm-1 col-md-1 col-lg-2">
+          </div>
+
+          <div class="col-10 col-sm-10 col-md-10 col-lg-8">
+            <form action="Loginform.php" method="POST">
+
+              <div class="row">
+                <div class="col-11 col-sm-12 col-md-10 col-lg-6 inputregister">
+                  <label for="email"><i class="fas fa-envelope"></i></label>
+                  <input type="text" name="email" value="" placeholder="Dirección de correo"/>
                 </div>
               </div>
-            </div>
-          </div>
-              <br>
-              <div class="field">
-                  <input class="ui submit button" type="submit" value="Ingresar">
+
+              <div class="row">
+                <div class="col-11 col-sm-12 col-md-10 col-lg-6 inputregister">
+                  <label for="pass"><i class="fas fa-unlock"></i></label>
+                  <input type="password" name="pass" value="" placeholder="Contraseña"/>
+                </div>
               </div>
-              <br>
-              <label>¿No tienes cuenta? <a href="http://localhost/Proyecto_Integrador/grupo4_eCommerce/Registro.php">Registrate!</a></label>
-              <br>
-              <label><a href="">Recuperar contraseña!</a></label>
+
+              <div class="row">
+                <div class="col-11 col-sm-12 col-md-10 col-lg-6 checkbox">
+                  <input type="checkbox" name="checkbox" value="checked"/>
+                  <span>Recordarme en este equipo.</span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-11 col-sm-12 col-md-10 col-lg-6 checkbox">
+                  <a href="#"><span>No recuerdo mi contraseña.</span></a>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                  <input class="button2" type="submit" name="" value="Ingresar">
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                  <a class="button" href="Registro.php">No tengo usuario</a>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="col-10 col-sm-10 col-md-10 col-lg-1">
+            <img class="register" src="img/signo.png" alt="">
+          </div>
+
+
         </div>
-      </form>
-    </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
+
+      </div>
+
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </html>
